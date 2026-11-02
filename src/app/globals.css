@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 :root{--bg:#080d18;--bg2:#0b1220;--panel:#101a2b;--panel2:#142137;--line:rgba(148,163,184,.15);--text:#f2f6fc;--muted:#94a3b8;--blue:#4b8cff;--cyan:#5ce1e6;--mono:'DM Mono',monospace;--display:'Space Grotesk',sans-serif;--body:'DM Sans',sans-serif}
