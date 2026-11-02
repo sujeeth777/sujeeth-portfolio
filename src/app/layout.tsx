@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { IBM_Plex_Mono, Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+
+const displayFont = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const bodyFont = Manrope({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+const monoFont = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Sri Sujeeth Sirivella | AI · Cybersecurity · Engineering",
@@ -19,5 +24,5 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en"><body className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>{children}</body></html>;
 }
