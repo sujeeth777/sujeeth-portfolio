@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Sri Sujeeth Sirivella | AI · Cybersecurity · Engineering",
   description: "Sri Sujeeth Sirivella — Computer Science and Engineering undergraduate exploring AI/ML, cybersecurity, networking and full-stack engineering.",
   openGraph: {
-    title: "Sri Sujeeth Sirivella | Engineering with intent",
+    title: "Sri Sujeeth Sirivella | Green terminal / intelligent systems",
     description: "Exploring intelligent systems, cybersecurity and networks through hands-on engineering.",
     type: "website",
   },
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#080d18",
+  themeColor: "#050b08",
   colorScheme: "dark light",
 };
 
