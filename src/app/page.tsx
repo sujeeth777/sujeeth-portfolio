@@ -4,10 +4,26 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowDown, ArrowDownRight, ArrowUp, ArrowUpRight, Award, BrainCircuit,
-  BriefcaseBusiness, Check, Code2, Cpu, Github, Globe2,
+  BriefcaseBusiness, Check, Code2, Cpu, Globe2,
   GraduationCap, Layers3, Menu, Moon, Network, Shield,
   Sparkles, Sun, X, Zap,
 } from "lucide-react";
+
+
+function GithubMark({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      aria-hidden="true"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.08c-3.1.67-3.76-1.32-3.76-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.77 2.1 3.4 1.49.1-.73.39-1.23.7-1.51-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.1-1.45 3.04-1.15 3.04-1.15.61 1.54.23 2.68.12 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.61 5.23-5.1 5.51.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" />
+    </svg>
+  );
+}
 
 const projects = [
   {
@@ -139,7 +155,7 @@ export default function Home() {
               <a className="button button-quiet" href="/resume/sujeeth%20CV.pdf" download>Download resume <ArrowDownRight size={17} /></a>
             </div>
             <div className="hero-socials">
-              <a href="https://github.com/sujeeth777" target="_blank" rel="noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={12} /></a>
+              <a href="https://github.com/sujeeth777" target="_blank" rel="noreferrer"><GithubMark size={16} /> GitHub <ArrowUpRight size={12} /></a>
               <span className="social-divider" />
               <span className="mono-label">BASED IN INDIA</span>
             </div>
@@ -196,7 +212,7 @@ export default function Home() {
       </section>
 
       <section className="github-section section-shell section-pad">
-        <div className="github-panel"><div className="github-glow" /><div className="github-copy"><span className="eyebrow"><span className="eyebrow-dot" /> THE CODE, IN PUBLIC</span><h2>Built in the open.<br /><span className="gradient-text">Improved every day.</span></h2><p>GitHub is where experiments become code, ideas get tested and the learning stays visible.</p><a className="button button-primary" href="https://github.com/sujeeth777" target="_blank" rel="noreferrer">Visit my GitHub <Github size={17} /></a></div><div className="github-stats">{github ? <><div><strong>{github.repos}</strong><span>PUBLIC REPOSITORIES</span></div><div><strong>{github.followers}</strong><span>FOLLOWERS</span></div><div><strong>{github.publicGists}</strong><span>PUBLIC GISTS</span></div></> : <div className="github-loading"><Github size={30} /><span>Live GitHub profile data</span><small>Open the profile to explore repositories</small></div>}<a href="https://github.com/sujeeth777?tab=repositories" target="_blank" rel="noreferrer" className="github-stat-link">EXPLORE REPOSITORIES <ArrowUpRight size={14} /></a></div></div>
+        <div className="github-panel"><div className="github-glow" /><div className="github-copy"><span className="eyebrow"><span className="eyebrow-dot" /> THE CODE, IN PUBLIC</span><h2>Built in the open.<br /><span className="gradient-text">Improved every day.</span></h2><p>GitHub is where experiments become code, ideas get tested and the learning stays visible.</p><a className="button button-primary" href="https://github.com/sujeeth777" target="_blank" rel="noreferrer">Visit my GitHub <GithubMark size={17} /></a></div><div className="github-stats">{github ? <><div><strong>{github.repos}</strong><span>PUBLIC REPOSITORIES</span></div><div><strong>{github.followers}</strong><span>FOLLOWERS</span></div><div><strong>{github.publicGists}</strong><span>PUBLIC GISTS</span></div></> : <div className="github-loading"><GithubMark size={30} /><span>Live GitHub profile data</span><small>Open the profile to explore repositories</small></div>}<a href="https://github.com/sujeeth777?tab=repositories" target="_blank" rel="noreferrer" className="github-stat-link">EXPLORE REPOSITORIES <ArrowUpRight size={14} /></a></div></div>
       </section>
 
       <section className="credentials-section section-shell section-pad" id="credentials">
@@ -213,7 +229,7 @@ export default function Home() {
         <span className="contact-note">A direct email and LinkedIn link will appear here once confirmed.</span>
       </section>
 
-      <footer className="footer section-shell"><a href="#home" className="brand"><span className="brand-mark">S<span>.</span></span><span className="brand-name">SUJEETH<span>/</span></span></a><span className="footer-copy">DESIGNED WITH CURIOSITY. BUILT WITH INTENT.</span><div className="footer-links"><a href="https://github.com/sujeeth777" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={17} /></a><a href="#home" aria-label="Back to top"><ArrowUp size={17} /></a></div><small>© {new Date().getFullYear()} SRI SUJEETH SIRIVELLA</small></footer>
+      <footer className="footer section-shell"><a href="#home" className="brand"><span className="brand-mark">S<span>.</span></span><span className="brand-name">SUJEETH<span>/</span></span></a><span className="footer-copy">DESIGNED WITH CURIOSITY. BUILT WITH INTENT.</span><div className="footer-links"><a href="https://github.com/sujeeth777" target="_blank" rel="noreferrer" aria-label="GitHub"><GithubMark size={17} /></a><a href="#home" aria-label="Back to top"><ArrowUp size={17} /></a></div><small>© {new Date().getFullYear()} SRI SUJEETH SIRIVELLA</small></footer>
 
       <AnimatePresence>{activeProject && <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setActiveProject(null)}><motion.div className="project-modal" initial={{ opacity: 0, y: 24, scale: .97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 16 }} onClick={e => e.stopPropagation()}><button className="modal-close icon-button" onClick={() => setActiveProject(null)} aria-label="Close project details"><X /></button><span className="eyebrow"><span className="eyebrow-dot" /> {activeProject.number} / {activeProject.type}</span><span className="project-status modal-status">{activeProject.status}</span><h2>{activeProject.name}</h2><p className="modal-description">{activeProject.description}</p><h4>WHAT I EXPLORED</h4><ul>{activeProject.details.map(d => <li key={d}><Check size={16} />{d}</li>)}</ul><h4>TECHNOLOGIES</h4><div className="project-stack modal-stack">{activeProject.stack.map(s => <span key={s}>{s}</span>)}</div><a className="button button-primary modal-link" href={activeProject.href} target="_blank" rel="noreferrer">Explore GitHub profile <ArrowUpRight size={16} /></a></motion.div></motion.div>}</AnimatePresence>
     </main>
