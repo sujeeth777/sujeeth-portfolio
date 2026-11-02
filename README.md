@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sri Sujeeth Sirivella — Portfolio
 
-## Getting Started
+A personal portfolio built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS 4**, **Motion**, and **Lucide**.
 
-First, run the development server:
+The visual direction is dark engineering: graphite surfaces, electric-blue and cyan accents, editorial typography, subtle motion, and a responsive layout.
+
+## Sections
+
+- Intro / hero with animated orbital illustration
+- About and education
+- Selected project case-study modals
+- Internship experience
+- Technical toolkit
+- Live public GitHub profile statistics
+- Verified-credentials gallery placeholder
+- Contact / social link
+
+## Run locally
+
+Requirements: Node.js 22+ and npm.
 
 ```bash
+git clone https://github.com/sujeeth777/sujeeth-portfolio.git
+cd sujeeth-portfolio
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Personalization before public launch
 
-To learn more about Next.js, take a look at the following resources:
+- Add a verified LinkedIn profile URL and public contact email.
+- Replace or update project repository links as each repository is made public.
+- Add only certificates that have actually been earned, with verifiable credential URLs.
+- Review internship dates, titles and descriptions.
+- Replace the current resume PDF in `public/resume/` when a newer approved version is ready.
+- Set the canonical site URL and social preview image after deployment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- GitHub profile data is fetched from GitHub's public user API in the browser. If the API is unavailable or rate-limited, the section falls back gracefully.
+- The contact area links to GitHub until a verified email or contact endpoint is supplied. It does not pretend to submit messages.
+- Project statuses are deliberately labeled as prototypes, in-development work, learning projects, or team contributions where appropriate.
+- Reduced-motion preferences are respected.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Import this repository into Vercel and use the default Next.js build settings. The production branch is `main`.
