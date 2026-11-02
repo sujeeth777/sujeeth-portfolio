@@ -225,7 +225,7 @@ export default function Home() {
         <div className="contact-orbit"><div /><div /><div /></div>
         <span className="eyebrow"><span className="eyebrow-dot" /> 06 / YOUR TURN</span>
         <h2>Have a good<br /><span className="gradient-text">problem to solve?</span></h2>
-        <p>I'm always interested in thoughtful conversations, interesting projects and opportunities to learn with good people.</p>
+        <p>I&apos;m always interested in thoughtful conversations, interesting projects and opportunities to learn with good people.</p>
         <a className="button button-primary contact-button" href="https://github.com/sujeeth777" target="_blank" rel="noreferrer">Connect on GitHub <ArrowUpRight size={17} /></a>
         <span className="contact-note">A direct email and LinkedIn link will appear here once confirmed.</span>
       </section>
