@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowDown, ArrowDownRight, ArrowUp, ArrowUpRight, Award, BrainCircuit,
   BriefcaseBusiness, Check, Code2, Cpu, Globe2,
-  GraduationCap, Layers3, Menu, Moon, Network, Shield,
+  GraduationCap, Layers3, Linkedin, Menu, Moon, Network, Shield,
   Sparkles, Sun, X, Zap,
 } from "lucide-react";
 
@@ -123,6 +123,8 @@ export default function Home() {
             </div>
             <div className="hero-socials">
               <a href="https://github.com/sujeeth777" target="_blank" rel="noreferrer"><GithubMark size={16} /> GitHub <ArrowUpRight size={12} /></a>
+              <a href="https://www.linkedin.com/in/sri-sujeeth-213593302" target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn <ArrowUpRight size={12} /></a>
+              <a href="https://www.credly.com/users/sri-sujeeth-sirivella" target="_blank" rel="noreferrer"><Award size={16} /> Credly <ArrowUpRight size={12} /></a>
               <span className="social-divider" />
               <span className="mono-label">BASED IN INDIA</span>
             </div>
@@ -184,7 +186,7 @@ export default function Home() {
 
       <section className="credentials-section section-shell section-pad" id="credentials">
         <div className="credentials-copy"><SectionHeading eyebrow="05 / CREDENTIALS" title={<>Proof over<br /><span className="gradient-text">promises.</span></>} text="Certifications and badges belong here only when they are earned and verifiable. No placeholder awards, no inflated credentials." /></div>
-        <div className="credentials-empty"><div className="credential-icon"><Award size={27} /></div><span className="mono-label">VERIFIED CREDENTIALS</span><h3>Your next badge<br />will go here.</h3><p>This gallery is ready for verified certificates and Credly badges as they are completed.</p><a className="text-link" href="https://www.credly.com/" target="_blank" rel="noreferrer">Explore Credly <ArrowUpRight size={15} /></a></div>
+        <div className="credentials-empty"><div className="credential-icon"><Award size={27} /></div><span className="mono-label">CREDLY · VERIFIED BADGES</span><h3>Learning, earned<br /><span className="gradient-text">and verifiable.</span></h3><p>Explore my Credly profile for certifications, skill badges and credentials as they are earned.</p><a className="button button-primary" href="https://www.credly.com/users/sri-sujeeth-sirivella" target="_blank" rel="noreferrer">View my Credly profile <ArrowUpRight size={16} /></a></div>
       </section>
 
       <section className="contact-section section-shell" id="contact">
@@ -192,13 +194,12 @@ export default function Home() {
         <span className="eyebrow"><span className="eyebrow-dot" /> 06 / YOUR TURN</span>
         <h2>Have a good<br /><span className="gradient-text">problem to solve?</span></h2>
         <p>I&apos;m always interested in thoughtful conversations, interesting projects and opportunities to learn with good people.</p>
-        <a className="button button-primary contact-button" href="https://github.com/sujeeth777" target="_blank" rel="noreferrer">Connect on GitHub <ArrowUpRight size={17} /></a>
-        <span className="contact-note">A direct email and LinkedIn link will appear here once confirmed.</span>
+        <div className="profile-links"><a className="button button-primary" href="https://www.linkedin.com/in/sri-sujeeth-213593302" target="_blank" rel="noreferrer">Connect on LinkedIn <Linkedin size={16} /></a><a className="button button-outline-green" href="https://github.com/sujeeth777" target="_blank" rel="noreferrer">Explore GitHub <GithubMark size={16} /></a><a className="button button-outline-green" href="https://www.credly.com/users/sri-sujeeth-sirivella" target="_blank" rel="noreferrer">Credly profile <Award size={16} /></a></div>
       </section>
 
-      <footer className="footer section-shell"><a href="#home" className="brand"><span className="brand-mark">S<span>.</span></span><span className="brand-name">SUJEETH<span>/</span></span></a><span className="footer-copy">DESIGNED WITH CURIOSITY. BUILT WITH INTENT.</span><div className="footer-links"><a href="https://github.com/sujeeth777" target="_blank" rel="noreferrer" aria-label="GitHub"><GithubMark size={17} /></a><a href="#home" aria-label="Back to top"><ArrowUp size={17} /></a></div><small>© {2026} SRI SUJEETH SIRIVELLA</small></footer>
+      <footer className="footer section-shell"><a href="#home" className="brand"><span className="brand-mark">S<span>.</span></span><span className="brand-name">SUJEETH<span>/</span></span></a><span className="footer-copy">DESIGNED WITH CURIOSITY. BUILT WITH INTENT.</span><div className="footer-links"><a href="https://github.com/sujeeth777" target="_blank" rel="noreferrer" aria-label="GitHub"><GithubMark size={17} /></a><a href="https://www.linkedin.com/in/sri-sujeeth-213593302" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a><a href="https://www.credly.com/users/sri-sujeeth-sirivella" target="_blank" rel="noreferrer" aria-label="Credly"><Award size={17} /></a><a href="#home" aria-label="Back to top"><ArrowUp size={17} /></a></div><small>© {2026} SRI SUJEETH SIRIVELLA</small></footer>
 
-      <AnimatePresence>{activeProject && <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setActiveProject(null)}><motion.div className="project-modal" initial={{ opacity: 0, y: 24, scale: .97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 16 }} onClick={e => e.stopPropagation()}><button className="modal-close icon-button" onClick={() => setActiveProject(null)} aria-label="Close project details"><X /></button><span className="eyebrow"><span className="eyebrow-dot" /> {activeProject.number} / {activeProject.type}</span><span className="project-status modal-status">{activeProject.status}</span><h2>{activeProject.name}</h2><p className="modal-description">{activeProject.description}</p><h4>WHAT I EXPLORED</h4><ul>{activeProject.details.map(d => <li key={d}><Check size={16} />{d}</li>)}</ul><h4>TECHNOLOGIES</h4><div className="project-stack modal-stack">{activeProject.stack.map(s => <span key={s}>{s}</span>)}</div><a className="button button-primary modal-link" href={activeProject.href} target="_blank" rel="noreferrer">Explore GitHub profile <ArrowUpRight size={16} /></a></motion.div></motion.div>}</AnimatePresence>
+      <AnimatePresence>{activeProject && <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setActiveProject(null)}><motion.div className="project-modal" initial={{ opacity: 0, y: 24, scale: .97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 16 }} onClick={e => e.stopPropagation()}><button className="modal-close icon-button" onClick={() => setActiveProject(null)} aria-label="Close project details"><X /></button><span className="eyebrow"><span className="eyebrow-dot" /> {activeProject.number} / {activeProject.type}</span><span className="project-status modal-status">{activeProject.status}</span><h2>{activeProject.name}</h2><p className="modal-description">{activeProject.description}</p><h4>WHAT I EXPLORED</h4><ul>{activeProject.details.map(d => <li key={d}><Check size={16} />{d}</li>)}</ul><h4>TECHNOLOGIES</h4><div className="project-stack modal-stack">{activeProject.stack.map(s => <span key={s}>{s}</span>)}</div><a className="button button-primary modal-link" href={activeProject.href} target="_blank" rel="noreferrer">View project repository <ArrowUpRight size={16} /></a></motion.div></motion.div>}</AnimatePresence>
     </main>
   );
 }
