@@ -27,46 +27,12 @@ function GithubMark({ size = 18 }: { size?: number }) {
 }
 
 const projects = [
-  {
-    number: "01", name: "Prelight", type: "AI INFRASTRUCTURE", status: "PROTOTYPE",
-    description: "An LLM workload benchmarking and evaluation prototype exploring inference behavior with Nebius Token Factory and NVIDIA Nemotron.",
-    stack: ["Python", "Nebius", "Nemotron", "LLM evaluation"],
-    accent: "blue", icon: Cpu,
-    details: ["Designed repeatable prompt workloads for model evaluation.", "Connected hosted inference through Nebius Token Factory.", "Explored latency and response behavior across test runs."],
-    href: "https://github.com/sujeeth777",
-  },
-  {
-    number: "02", name: "AI Phishing URL Detector", type: "AI × CYBERSECURITY", status: "IN DEVELOPMENT",
-    description: "A machine-learning classification project exploring URL signals to distinguish phishing links from legitimate URLs.",
-    stack: ["Python", "Scikit-learn", "Feature engineering", "FastAPI"],
-    accent: "cyan", icon: Shield,
-    details: ["Worked with a dataset containing 235,795 URL records and 54 features.", "Explored a supervised binary-classification workflow.", "Planned comparisons across Logistic Regression, Decision Trees, Random Forest and XGBoost."],
-    href: "https://github.com/sujeeth777",
-  },
-  {
-    number: "03", name: "TinyGPT-100K", type: "DEEP LEARNING", status: "LEARNING PROJECT",
-    description: "A compact GPT-style language model built to understand tokenization, attention, transformer architecture and training.",
-    stack: ["Python", "PyTorch", "Transformers", "Deep learning"],
-    accent: "violet", icon: BrainCircuit,
-    details: ["Implemented a decoder-only transformer with 52,582 parameters.", "Worked through tokenization, embeddings, context windows and training loops.", "Trained on a small character-level text corpus."],
-    href: "https://github.com/sujeeth777",
-  },
-  {
-    number: "04", name: "FarmHub", type: "FULL-STACK DEVELOPMENT", status: "IN DEVELOPMENT",
-    description: "A farm produce management application concept for inventory, categories, quantities and sales workflows.",
-    stack: ["React", "Bootstrap", "Node.js", "Express", "MongoDB"],
-    accent: "green", icon: Layers3,
-    details: ["Designed produce and category data models.", "Built a Node.js and Express backend connected to MongoDB Atlas.", "Planned stock updates and sales workflows around CRUD operations."],
-    href: "https://github.com/sujeeth777",
-  },
-  {
-    number: "05", name: "VSA-QS", type: "ENGINEERING INTERNSHIP", status: "TEAM CONTRIBUTION",
-    description: "A technical contribution to a larger engineering project, focused on dashboard and incident-management workflows.",
-    stack: ["Next.js", "React", "Tailwind CSS", "Recharts"],
-    accent: "orange", icon: Code2,
-    details: ["Contributed to an incident-list workflow in a team codebase.", "Worked with responsive UI, sorting, filtering and status presentation.", "Contributed as a technical project intern; the overall product is not represented as personally owned."],
-    href: "https://github.com/srsubin/VSA-QS",
-  },
+{number:"01",name:"Prelight",type:"AI INFRASTRUCTURE",status:"ACTIVE BUILD",description:"An AI infrastructure change-safety system that tests proposed inference changes against controlled baselines before rollout.",stack:["Python","FastAPI","Nemotron","Nebius","Next.js"],accent:"green",icon:Cpu,details:["Analyzes proposed model-serving configuration changes.","Runs controlled baseline and candidate inference experiments.","Compares TTFT, latency, throughput and errors before producing rollout guidance."],href:"https://github.com/sujeeth777/prelight"},
+{number:"02",name:"AI Phishing URL Detector",type:"MACHINE LEARNING / SECURITY",status:"IN DEVELOPMENT",description:"A Flask application and JSON API that classifies URLs as phishing or legitimate using a trained scikit-learn model and risk-pattern checks.",stack:["Python","Flask","Scikit-learn","Pandas","ML"],accent:"green",icon:Shield,details:["Works with URL-derived signals for binary classification.","Loads a saved scikit-learn model and applies high-risk pattern checks.","Exposes a prediction API with confidence and extracted feature values."],href:"https://github.com/sujeeth777/AI-Phishing-URL-Detector"},
+{number:"03",name:"Ecosystem Stress Prediction",type:"AI / ENVIRONMENTAL DATA",status:"RESEARCH PROTOTYPE",description:"A Western Ghats study using MODIS vegetation indices and NASA POWER weather data to explore indicator-based ecosystem stress patterns.",stack:["Python","Streamlit","MODIS","NASA POWER","Random Forest"],accent:"green",icon:BrainCircuit,details:["Builds monthly environmental observations from vegetation and weather sources.","Trains Decision Tree and Random Forest classifiers.","The stress label is an educational proxy, not verified habitat-loss ground truth."],href:"https://github.com/sujeeth777/ecosystem_stress_project"},
+{number:"04",name:"Hospital Management System",type:"DATABASE / FULL-STACK",status:"ACADEMIC PROJECT",description:"An academic hospital database system combining Oracle SQL, Embedded SQL in C, and an interactive web dashboard with patient workflows.",stack:["Oracle 23ai","SQL","Pro*C","Python","Flask"],accent:"green",icon:Layers3,details:["Models normalized hospital workflows across patients, doctors, appointments and billing.","Demonstrates joins, constraints, cursors and ACID transaction handling.","Includes an admin dashboard and patient self-service portal."],href:"https://github.com/sujeeth777/Hospital_Project_DBMS"},
+{number:"05",name:"Farm Produce Management",type:"FULL-STACK / DATABASE",status:"ACADEMIC PROJECT",description:"A MERN inventory and sales management application for farm produce, stock tracking, categories and transaction history.",stack:["React","Bootstrap","Node.js","Express","MongoDB"],accent:"green",icon:Code2,details:["Supports produce and category CRUD operations with search and filtering.","Records sales with stock deduction and overselling checks.","Provides dashboard analytics, authentication and a sales ledger."],href:"https://github.com/sujeeth777/Farm_Produce_DBMS"},
+{number:"06",name:"YouTube AI Summarizer",type:"GENERATIVE AI / AUTOMATION",status:"REPOSITORY DEMO",description:"A Python-based YouTube transcript summarization project developed as an AI learning build.",stack:["Python","YouTube","NLP","Summarization"],accent:"green",icon:Sparkles,details:["Repository contains a Python script for the summarization workflow.","A practical introduction to applying AI to video content."],href:"https://github.com/sujeeth777/AICTE-project"}
 ];
 
 const experience = [
@@ -149,8 +115,8 @@ export default function Home() {
         <div className="hero-copy">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: .6 }}>
             <div className="hero-kicker"><span className="status-pulse" /> COMPUTER SCIENCE UNDERGRADUATE <span className="kicker-line" /></div>
-            <h1>Building <span className="gradient-text">intelligent</span><br />systems. Securing<br /><span className="outline-text">what matters.</span></h1>
-            <p className="hero-lede">I&apos;m Sri Sujeeth — exploring the intersection of AI, cybersecurity and networks, one hands-on build at a time.</p>
+            <h1>Engineering <span className="gradient-text">intelligent</span><br />systems. Defending<br /><span className="outline-text">what matters.</span></h1>
+            <p className="hero-lede">I&apos;m Sri Sujeeth — a CSE undergraduate building at the intersection of artificial intelligence, cybersecurity and software systems.</p>
             <div className="hero-ctas">
               <a className="button button-primary" href="#work">Explore my work <ArrowUpRight size={17} /></a>
               <a className="button button-quiet" href="/resume/sujeeth%20CV.pdf" download>Download resume <ArrowDownRight size={17} /></a>
@@ -191,7 +157,7 @@ export default function Home() {
           {projects.map((p, i) => {
             const Icon = p.icon;
             return <motion.button key={p.number} className={`project-card project-${p.accent}`} onClick={() => setActiveProject(p)} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }} transition={{ duration: .5, delay: (i % 2) * .08 }}>
-              <div className="project-card-top"><span className="project-number">{p.number} / 05</span><span className="project-status">{p.status}</span></div>
+              <div className="project-card-top"><span className="project-number">{p.number} / 06</span><span className="project-status">{p.status}</span></div>
               <div className="project-icon"><Icon size={25} strokeWidth={1.5} /></div>
               <span className="project-type">{p.type}</span><h3>{p.name}</h3><p>{p.description}</p>
               <div className="project-stack">{p.stack.map(s => <span key={s}>{s}</span>)}</div>
@@ -199,7 +165,7 @@ export default function Home() {
             </motion.button>;
           })}
         </div>
-        <div className="work-footnote"><span className="eyebrow-dot" /> Project details reflect current known progress. Repository and live-demo links will be added as each project is verified and published.</div>
+        <div className="work-footnote"><span className="eyebrow-dot" /> Each card links directly to its source repository. Project status and technical claims are aligned with available documentation.</div>
       </section>
 
       <section className="experience-section section-shell section-pad" id="experience">
