@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowDown, ArrowDownRight, ArrowUp, ArrowUpRight, Award, BrainCircuit,
@@ -84,7 +85,7 @@ const skillGroups = [
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
-function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
+function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: ReactNode; text?: string }) {
   return (
     <div className="section-heading">
       <span className="eyebrow"><span className="eyebrow-dot" />{eyebrow}</span>
