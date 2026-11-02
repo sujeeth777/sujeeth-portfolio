@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
-  ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Award, BrainCircuit,
-  BriefcaseBusiness, Check, Code2, Cpu, ExternalLink, Github, Globe2,
-  GraduationCap, Layers3, Linkedin, Mail, Menu, Moon, Network, Shield,
-  Sparkles, Sun, Terminal, X, Zap,
+  ArrowDown, ArrowDownRight, ArrowUp, ArrowUpRight, Award, BrainCircuit,
+  BriefcaseBusiness, Check, Code2, Cpu, Github, Globe2,
+  GraduationCap, Layers3, Menu, Moon, Network, Shield,
+  Sparkles, Sun, X, Zap,
 } from "lucide-react";
 
 const projects = [
@@ -136,7 +136,7 @@ export default function Home() {
             <p className="hero-lede">I&apos;m Sri Sujeeth — exploring the intersection of AI, cybersecurity and networks, one hands-on build at a time.</p>
             <div className="hero-ctas">
               <a className="button button-primary" href="#work">Explore my work <ArrowUpRight size={17} /></a>
-              <a className="button button-quiet" href="#about">More about me <ArrowDownRight size={17} /></a>
+              <a className="button button-quiet" href="/resume/sujeeth%20CV.pdf" download>Download resume <ArrowDownRight size={17} /></a>
             </div>
             <div className="hero-socials">
               <a href="https://github.com/sujeeth777" target="_blank" rel="noreferrer"><Github size={16} /> GitHub <ArrowUpRight size={12} /></a>
