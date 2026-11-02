@@ -4,7 +4,6 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Sri Sujeeth Sirivella | AI · Cybersecurity · Engineering",
   description: "Sri Sujeeth Sirivella — Computer Science and Engineering undergraduate exploring AI/ML, cybersecurity, networking and full-stack engineering.",
-  metadataBase: new URL("https://sujeeth777.github.io"),
   openGraph: {
     title: "Sri Sujeeth Sirivella | Engineering with intent",
     description: "Exploring intelligent systems, cybersecurity and networks through hands-on engineering.",
