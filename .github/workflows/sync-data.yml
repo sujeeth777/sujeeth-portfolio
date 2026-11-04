@@ -1,0 +1,43 @@
+name: Sync portfolio data
+
+# Auto-syncs Credly badges + GitHub repo snapshot into data/*.json.
+# New badges/repos appear on the site automatically after this runs.
+
+on:
+  schedule:
+    - cron: "30 18 * * *" # daily at 18:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-data
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch Credly badges + GitHub repos
+        run: python scripts/sync_data.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "portfolio-sync-bot"
+          git config user.email "actions@github.com"
+          git add data/badges.json data/projects-fallback.json
+          if git diff --cached --quiet; then
+            echo "No changes — data already in sync."
+          else
+            git commit -m "chore(data): auto-sync Credly badges + GitHub repos [skip ci]"
+            git push
+          fi
