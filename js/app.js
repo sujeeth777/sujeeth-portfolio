@@ -234,6 +234,94 @@
   loadProjects();
   loadBadges();
 
+  /* ================= HELP / CONTACT FORM ================= */
+  const FORM_ENDPOINT = "https://formsubmit.co/ajax/srisujeeths@gmail.com";
+  const FORM_EMAIL = "srisujeeths@gmail.com";
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const helpForm = $("#help-form");
+  if (helpForm) {
+    const statusBox = $("#form-status");
+    const sendBtn = $("#form-send");
+
+    const setStatus = (kind, html) => {
+      statusBox.className = "form-status visible " + kind;
+      statusBox.innerHTML = html;
+    };
+
+    const mailtoHref = (d) => {
+      const subject = encodeURIComponent(`Help request — ${d.topic || "general"}`);
+      const body = encodeURIComponent(
+        `${d.message}\n\n— ${d.name}\nReply to: ${d.email}`
+      );
+      return `mailto:${FORM_EMAIL}?subject=${subject}&body=${body}`;
+    };
+
+    const tryFormSubmit = (d) => {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 8000);
+      return fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: d.name, email: d.email, topic: d.topic, message: d.message,
+          _subject: `Help request: ${d.topic || "general"} — from portfolio`,
+          _template: "table", _captcha: "false",
+        }),
+        signal: controller.signal,
+      })
+        .then((res) => res.json())
+        .then((out) => String(out.success) === "true")
+        .finally(() => clearTimeout(timer));
+    };
+
+    helpForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (sendBtn.disabled) return;
+
+      const data = Object.fromEntries(new FormData(helpForm));
+      if (data._honey) return; // silent bot trap
+
+      // client-side validation
+      if (!data.name.trim() || !data.message.trim()) {
+        return setStatus("err", "&gt; [ERROR] name and message are required fields.");
+      }
+      if (!EMAIL_RE.test(data.email.trim())) {
+        return setStatus("err", "&gt; [ERROR] that email address doesn't look valid.");
+      }
+
+      const d = {
+        name: data.name.trim(),
+        email: data.email.trim(),
+        topic: data.topic || "",
+        message: data.message.trim(),
+      };
+
+      sendBtn.disabled = true;
+      const originalLabel = sendBtn.textContent;
+      sendBtn.textContent = "./transmitting...";
+      setStatus("ok", "&gt; encrypting &amp; transmitting your message...");
+
+      try {
+        const delivered = await tryFormSubmit(d);
+        if (!delivered) throw new Error("service refused");
+        setStatus("ok", "&gt; [OK] message delivered. I'll reply within 24h — check your inbox!");
+        helpForm.reset();
+      } catch {
+        // delivery service unreachable — never lose the message:
+        // open the visitor's email app with everything prefilled
+        setStatus(
+          "err",
+          "&gt; [INFO] delivery service busy — opening your email app with the message prefilled. Just press send!"
+        );
+        window.location.href = mailtoHref(d);
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = originalLabel;
+      }
+    });
+  }
+
   /* ---------------- misc ---------------- */
   $("#year").textContent = new Date().getFullYear();
 
