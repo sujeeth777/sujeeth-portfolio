@@ -40,4 +40,5 @@ It's a fully static site — works anywhere:
 - Personal info & experience: `index.html`
 - Colors: CSS variables at the top of `css/style.css`
 - GitHub username / hidden repos: `CONFIG` at the top of `js/app.js`
+- Contact form email: `FORM_ENDPOINT` / `FORM_EMAIL` in `js/app.js` (messages go through formsubmit.co when reachable, and fall back to opening the visitor's email app with the message prefilled when it isn't)
 - Credly user id: `CREDLY_USER_ID` in `scripts/sync_data.py`
