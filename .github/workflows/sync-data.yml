@@ -34,7 +34,7 @@ jobs:
         run: |
           git config user.name "portfolio-sync-bot"
           git config user.email "actions@github.com"
-          git add data/badges.json data/projects-fallback.json
+          git add data/
           if git diff --cached --quiet; then
             echo "No changes — data already in sync."
           else

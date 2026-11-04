@@ -1,0 +1,57 @@
+{
+  "source": "local-scan",
+  "generated_at": "2026-11-04T20:54:57Z",
+  "count": 10,
+  "files": [
+    {
+      "file": "certificates/accenture_certificate software engineering job simulation.pdf",
+      "title": "Accenture \u2014 Software Engineering Job Simulation",
+      "type": "pdf"
+    },
+    {
+      "file": "certificates/Certificate b10x.pdf",
+      "title": "B10X \u2014 Certificate",
+      "type": "pdf"
+    },
+    {
+      "file": "certificates/cisco networking acadamy sujeeth.pdf",
+      "title": "Cisco Networking Academy",
+      "type": "pdf"
+    },
+    {
+      "file": "certificates/Deloitte_certificate cyber job simulation.pdf",
+      "title": "Deloitte \u2014 Cyber Job Simulation",
+      "type": "pdf"
+    },
+    {
+      "file": "certificates/EC councle psujeeth.png",
+      "title": "EC Council",
+      "type": "image"
+    },
+    {
+      "file": "certificates/greatlearnling sujeeth intro to AI.pdf",
+      "title": "Great Learning \u2014 Introduction to AI",
+      "type": "pdf"
+    },
+    {
+      "file": "certificates/Machyard  Certificate areospace sujeeth.pdf",
+      "title": "Machyard \u2014 Aerospace Certificate",
+      "type": "pdf"
+    },
+    {
+      "file": "certificates/Fundamentals of Remote Sensing NASA.pdf",
+      "title": "NASA \u2014 Fundamentals of Remote Sensing",
+      "type": "pdf"
+    },
+    {
+      "file": "certificates/pirple HTML And CSS sujeeth.pdf",
+      "title": "Pirple \u2014 HTML & CSS",
+      "type": "pdf"
+    },
+    {
+      "file": "certificates/Python for Data Structures,.pdf",
+      "title": "Python for Data Structures",
+      "type": "pdf"
+    }
+  ]
+}

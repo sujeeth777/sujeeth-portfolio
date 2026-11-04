@@ -8,7 +8,9 @@ Pure HTML / CSS / JavaScript portfolio for **Sri Sujeeth Sirivella** — black �
 index.html                  # the whole site
 css/style.css               # all styling
 js/app.js                   # boot sequence, matrix rain, live data sync
+certificates/               # raw certificate files (pdf / images) — shown in the certs section
 data/badges.json            # Credly badge wallet snapshot (auto-updated)
+data/certificates.json      # auto-generated listing of certificates/ (regenerated on every deploy)
 data/projects-fallback.json # GitHub repos snapshot (auto-updated)
 assets/                     # favicon + resume.pdf
 scripts/sync_data.py        # data sync script (stdlib only)
@@ -19,6 +21,7 @@ scripts/sync_data.py        # data sync script (stdlib only)
 
 - **Projects** are fetched **live from the GitHub API** in the browser — a new public repo at [github.com/sujeeth777](https://github.com/sujeeth777) appears on the site immediately (forks excluded; edit `excludeRepos` in `js/app.js` to hide more).
 - **Certifications** come from [Credly](https://www.credly.com/users/sri-sujeeth-sirivella) via `data/badges.json`. A GitHub Action (`sync-data.yml`) runs daily, re-fetches the Credly badge wallet + GitHub snapshot, and commits any changes — new badges show up automatically within ~24h.
+- **Certificate files** — drop any PDF or image into `certificates/` and push; the deploy workflow rescans the folder and the site lists it automatically (add a nice title for it in `CERT_TITLE_OVERRIDES` in `scripts/sync_data.py`, or let it auto-name).
 - The snapshots in `data/` double as offline fallbacks if the GitHub API is rate-limited.
 
 Run the sync manually:

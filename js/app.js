@@ -231,8 +231,44 @@
     });
   }
 
+  /* ================= CERTIFICATE FILES (pdf / images) ================= */
+  const PDF_ICON =
+    '<svg viewBox="0 0 24 24" width="46" height="46" aria-hidden="true"><path fill="currentColor" d="M6 2h9l5 5v15H6V2Zm8 1.5V8h4.5L14 3.5ZM8 12h8v1.5H8V12Zm0 3.5h8V17H8v-1.5Zm0-7h5V10H8V8.5Z"/></svg>';
+
+  async function loadCertFiles() {
+    const wrap = $("#cert-files");
+    const grid = $("#cert-files-grid");
+    if (!wrap || !grid) return;
+    let data;
+    try {
+      data = await fetch("data/certificates.json", { cache: "no-cache" }).then((r) => r.json());
+    } catch {
+      wrap.classList.add("hidden"); // manifest missing — hide the panel silently
+      return;
+    }
+    if (!data.count) { wrap.classList.add("hidden"); return; }
+    grid.innerHTML = "";
+    data.files.forEach((f, i) => {
+      // encode each path segment so spaces/commas in filenames stay URL-safe
+      const url = f.file.split("/").map(encodeURIComponent).join("/");
+      const card = document.createElement("a");
+      card.className = "cert-file-card";
+      card.href = url;
+      card.target = "_blank";
+      card.rel = "noopener";
+      card.title = f.title;
+      card.style.animationDelay = Math.min(i * 40, 400) + "ms";
+      card.innerHTML = `
+        <span class="cert-file-preview">${f.type === "image" ? `<img src="${url}" alt="${esc(f.title)}" loading="lazy">` : PDF_ICON}</span>
+        <span class="cert-file-name">${esc(f.title)}</span>
+        <span class="cert-file-tag">${f.type === "image" ? "IMAGE" : "PDF"} · open →</span>`;
+      grid.appendChild(card);
+    });
+  }
+
   loadProjects();
   loadBadges();
+  loadCertFiles();
 
   /* ================= HELP / CONTACT FORM ================= */
   const FORM_ENDPOINT = "https://formsubmit.co/ajax/srisujeeths@gmail.com";

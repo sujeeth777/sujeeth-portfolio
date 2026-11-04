@@ -16,8 +16,25 @@ CREDLY_PROFILE = "https://www.credly.com/users/sri-sujeeth-sirivella"
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+CERT_DIR = ROOT / "certificates"
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (portfolio-sync)", "Accept": "application/json"}
+
+# hand-tuned display titles for certificate files (keyed by normalized filename)
+CERT_TITLE_OVERRIDES = {
+    "accenture_certificate software engineering job simulation.pdf": "Accenture — Software Engineering Job Simulation",
+    "certificate b10x.pdf": "B10X — Certificate",
+    "cisco networking acadamy sujeeth.pdf": "Cisco Networking Academy",
+    "deloitte_certificate cyber job simulation.pdf": "Deloitte — Cyber Job Simulation",
+    "ec councle psujeeth.png": "EC Council",
+    "fundamentals of remote sensing nasa.pdf": "NASA — Fundamentals of Remote Sensing",
+    "greatlearnling sujeeth intro to ai.pdf": "Great Learning — Introduction to AI",
+    "machyard certificate areospace sujeeth.pdf": "Machyard — Aerospace Certificate",
+    "pirple html and css sujeeth.pdf": "Pirple — HTML & CSS",
+    "python for data structures,.pdf": "Python for Data Structures",
+}
+
+IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".avif"}
 
 
 def fetch_json(url: str):
@@ -118,9 +135,56 @@ def sync_repos() -> int:
     return len(repos)
 
 
+def sync_certificate_files() -> int:
+    """List everything in certificates/ into data/certificates.json.
+
+    Purely local (no network) — rerun by the deploy workflow so new files
+    dropped into the folder appear on the site automatically.
+    """
+    def clean_title(path: Path) -> str:
+        stem = path.stem
+        normalized = " ".join(stem.lower().split()) + path.suffix.lower()  # collapse whitespace, keep ext
+        if normalized in CERT_TITLE_OVERRIDES:
+            return CERT_TITLE_OVERRIDES[normalized]
+        return " ".join(w.capitalize() for w in normalized.rsplit(".", 1)[0].split())
+
+    files = []
+    if CERT_DIR.is_dir():
+        for path in sorted(CERT_DIR.rglob("*")):
+            if not path.is_file() or path.name.startswith("."):
+                continue
+            ext = path.suffix.lower()
+            rel = path.relative_to(ROOT).as_posix()
+            files.append(
+                {
+                    "file": rel,
+                    "title": clean_title(path),
+                    "type": "image" if ext in IMAGE_EXTS else "pdf",
+                }
+            )
+
+    files.sort(key=lambda x: x["title"].lower())
+    out = {
+        "source": "local-scan",
+        "generated_at": now_iso(),
+        "count": len(files),
+        "files": files,
+    }
+    (DATA / "certificates.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
+    return len(files)
+
+
 if __name__ == "__main__":
     DATA.mkdir(exist_ok=True)
-    n_badges = sync_badges()
-    n_repos = sync_repos()
-    print(f"synced {n_badges} badges -> data/badges.json")
-    print(f"synced {n_repos} repos -> data/projects-fallback.json")
+    n_certs = sync_certificate_files()
+    print(f"scanned {n_certs} certificate files -> data/certificates.json")
+    try:
+        n_badges = sync_badges()
+        print(f"synced {n_badges} badges -> data/badges.json")
+    except Exception as exc:  # keep local scan alive even if network dies
+        print(f"warn: credly sync failed ({exc}) — keeping existing badges.json")
+    try:
+        n_repos = sync_repos()
+        print(f"synced {n_repos} repos -> data/projects-fallback.json")
+    except Exception as exc:
+        print(f"warn: github sync failed ({exc}) — keeping existing projects-fallback.json")
